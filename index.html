@@ -248,7 +248,7 @@ for filename in files:
               <span class="post-meta-item-text">Veröffentlicht am</span>
               
 
-              <time title="Erstellt: 2020-05-08 19:36:45 / Geändert am: 20:38:25" itemprop="dateCreated datePublished" datetime="2020-05-08T19:36:45+08:00">2020-05-08</time>
+              <time title="Erstellt: 2020-05-08 19:36:45 / Geändert am: 20:46:48" itemprop="dateCreated datePublished" datetime="2020-05-08T19:36:45+08:00">2020-05-08</time>
             </span>
 
           
@@ -262,8 +262,10 @@ for filename in files:
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>用py写了一个简单的ip代理池，源码如下:<br>#####从xici爬取ip<br>tips[^注]<br>[^注]:需要在目录下创建HTTPS_ip.txt和HTTP_ip.txt和一个enable_ip.txt<br>    # -<em>- coding: utf-8 -</em>-</p>
-<pre><code>from bs4 import BeautifulSoup
+          <p>用py写了一个简单的ip代理池，源码如下:</p>
+<h5 id="从xici爬取ip-tips"><a href="#从xici爬取ip-tips" class="headerlink" title="从xici爬取ip^tips"></a>从xici爬取ip<a href="需要在目录下创建HTTPS_ip.txt和HTTP_ip.txt和一个enable_ip.txt">^tips</a></h5><pre><code># -*- coding: utf-8 -*-
+
+from bs4 import BeautifulSoup
 import requests
 import os
 
@@ -310,8 +312,9 @@ if __name__==&quot;__main__&quot;:
     for i in range(1,11):        #设爬取代理的范围
         target_url = &quot;https://www.xicidaili.com/nn/&quot; + str(i) # 爬取代理的网站
         get_ip_list(target_url)</code></pre><hr>
-<p>#####验证ip可用性<br>    # -<em>- coding: utf-8 -</em>-</p>
-<pre><code>import requests
+<h5 id="验证ip可用性"><a href="#验证ip可用性" class="headerlink" title="验证ip可用性"></a>验证ip可用性</h5><pre><code># -*- coding: utf-8 -*-
+
+import requests
 from queue import Queue
 import sys
 import threading
