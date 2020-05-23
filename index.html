@@ -79,7 +79,7 @@
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="Toggle navigation bar">
+    <div class="toggle" aria-label="Navigationsleiste an/ausschalten">
       <span class="toggle-line toggle-line-first"></span>
       <span class="toggle-line toggle-line-middle"></span>
       <span class="toggle-line toggle-line-last"></span>
@@ -110,12 +110,12 @@
   <ul id="menu" class="menu">
         <li class="menu-item menu-item-home">
 
-    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Startseite</a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archiv</a>
 
   </li>
   </ul>
@@ -144,6 +144,74 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh_Hans">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/23/ctf01/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Glunko">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/05/23/ctf01/" class="post-title-link" itemprop="url">ctf001</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+
+              <time title="Erstellt: 2020-05-23 18:05:04 / Geändert am: 21:54:49" itemprop="dateCreated datePublished" datetime="2020-05-23T18:05:04+08:00">2020-05-23</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>又到了周末，上网课是真的难受，今天就写写前几天做的题吧(由于我太菜，只做了几道misc)。</p>
+<h3 id="misc1"><a href="#misc1" class="headerlink" title="misc1"></a>misc1</h3><p><img src="/ctf01/misc101.png" alt="misc1"><br>下载题目得到一个zip，解压得到一张图片。<br><img src="/ctf01/misc102.png" alt="misc1"><br>先用010打开一下，发现尾部之后有一串base32编码。<br><img src="/ctf01/misc103.png" alt="misc1"><br>拿去在线解码，得到这个:<br><img src="/ctf01/misc104.png" alt="misc1"><br>发现是又是一串奇怪的字符，emmm，也可能是16进制，然后想想常用的文件的头和尾，好像也不是，然后看到了尾部的o405感觉和zip的头部504b相似。<br>然后拿去在线字符翻转。<br><img src="/ctf01/misc105.png" alt="misc1"><br>思考是不是zip的文件然后经过了加密，然后就找到了rot13<br><img src="/ctf01/misc106.png" alt="misc1"><br>拿去在线解密，复制，另存为zip文件，然后解压…<br><img src="/ctf01/misc107.png" alt="misc1"><br>然后….加密了？<br><img src="/ctf01/misc108.png" alt="misc1"><br><img src="/ctf01/misc108.jpg" alt="misc1"><br>也没有密码，先看看是不是文件伪加密。<br><img src="/ctf01/misc109.png" alt="misc1"><br>发现伪加密，然后解压得到flag。<br><img src="/ctf01/misc100.png" alt="misc1">  </p>
+<hr>
+<h3 id="misc2"><a href="#misc2" class="headerlink" title="misc2"></a>misc2</h3><p>又是一张图片<br><img src="/ctf01/misc200.png" alt="misc2"><br>发现图片有500kb大小，里面会不会藏东西，拿去kali扫描一下，无获……<br><img src="/ctf01/misc201.png" alt="misc2"><br>于是只好看rgb通道有没有什么收获<br><img src="/ctf01/misc202.png" alt="misc2"><br>发现一张二维码，嘻嘻<br><img src="/ctf01/misc203.png" alt="misc2"><br>但是扫描后又是奇怪的字符估计又是hex。<br>看到是pyc的头部…<br>然后拿去在线工具运行。<br><img src="/ctf01/misc204.png" alt="misc2"><br>在python运行一下得到flag。</p>
+<hr>
+<h3 id="misc3"><a href="#misc3" class="headerlink" title="misc3"></a>misc3</h3><p>一个小滑稽<br><img src="/ctf01/misc300.png" alt="misc3"><br>先用010打开，发现jpg尾部之后还有东西。<br><img src="/ctf01/misc301.png" alt="misc3"><br>于是想想会不会后面藏了什么文件，继续往下看，看到了png的头89504E47<br><img src="/ctf01/misc302.png" alt="misc3"><br>就像这样子<br><img src="/ctf01/misc303.jpg" alt="misc3"><br>然后就写一个小小的py脚本:<br>    flie = ‘a.txt’<br>    with open(flie,’r+’) as f:<br>        r = f.read()<br>        list1 = r.split(‘ ‘)<br>    with open(‘xie.txt’,’w’) as x:<br>        yaor = ‘’<br>        for i in range(len(list1)):<br>            yaor = list1[-1] + ‘ ‘<br>            list1.pop(-1)<br>            x.write(yaor)<br>然后复制另存为png就完事了<br><img src="/ctf01/misc303.png" alt="misc3"></p>
+<hr>
+<h3 id="misc4"><a href="#misc4" class="headerlink" title="misc4"></a>misc4</h3><p>emmm，是一个pcap文件，流量分析还不是还会，顺便学习好了。<br><img src="/ctf01/misc400.png" alt="misc4"><br>过滤一下http协议<br><img src="/ctf01/misc401.png" alt="misc4"><br>看见一个md5加密和gzcompress()函数<br><img src="/ctf01/misc402.png" alt="misc4"><br>于是md5拿去在线网站撞库，得到cometohackme，无果…<br>继续看看剩下的，http追踪流发现一串字符串，感觉是base64的密文，拿去php解密<br><img src="/ctf01/misc403.png" alt="misc4"><br><img src="/ctf01/misc405.png" alt="misc4"><br>得flag</p>
+<hr>
+<h3 id="misc5"><a href="#misc5" class="headerlink" title="misc5"></a>misc5</h3><p>是一个图<br><img src="/ctf01/misc500.png" alt="misc5"><br>有300kb了，再一次拿到kali扫描<br><img src="/ctf01/misc501.png" alt="misc5"><br>再一次无果<br><img src="/ctf01/misc502.jpg" alt="misc5"><br>(可恶….是幻术吗…明明感觉是这样子…怎么会再一次…大意了)<br>然后看看rgb通道，没有什么东西。考虑lsb隐写，然后得到zip的hex<br><img src="/ctf01/misc502.png" alt="misc5"><br>文件损坏…拿WinRAR修复一下<br><img src="/ctf01/misc503.png" alt="misc5"><br>得到一个未知文件，用010打开是一个elf文件，要用kali打开<br><img src="/ctf01/misc507.png" alt="misc5"><br><img src="/ctf01/misc504.png" alt="misc5"><br><img src="/ctf01/misc505.png" alt="misc5"><br>sudo chmon 755 1 给一个限权<br><img src="misc506.png" alt="misc5"></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh_Hans">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/08/wenjiangaiming/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -166,10 +234,10 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               
 
-              <time title="Created: 2020-05-08 19:55:49 / Modified: 20:22:03" itemprop="dateCreated datePublished" datetime="2020-05-08T19:55:49+08:00">2020-05-08</time>
+              <time title="Erstellt: 2020-05-08 19:55:49 / Geändert am: 20:22:03" itemprop="dateCreated datePublished" datetime="2020-05-08T19:55:49+08:00">2020-05-08</time>
             </span>
 
           
@@ -245,10 +313,10 @@ for filename in files:
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               
 
-              <time title="Created: 2020-05-08 19:36:45 / Modified: 20:50:18" itemprop="dateCreated datePublished" datetime="2020-05-08T19:36:45+08:00">2020-05-08</time>
+              <time title="Erstellt: 2020-05-08 19:36:45 / Geändert am: 20:50:18" itemprop="dateCreated datePublished" datetime="2020-05-08T19:36:45+08:00">2020-05-08</time>
             </span>
 
           
@@ -442,10 +510,10 @@ if __name__==&quot;__main__&quot;:
 
       <ul class="sidebar-nav motion-element">
         <li class="sidebar-nav-toc">
-          Table of Contents
+          Inhaltsverzeichnis
         </li>
         <li class="sidebar-nav-overview">
-          Overview
+          Übersicht
         </li>
       </ul>
 
@@ -464,13 +532,13 @@ if __name__==&quot;__main__&quot;:
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">2</span>
-          <span class="site-state-item-name">posts</span>
+          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-name">Artikel</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">2</span>
-        <span class="site-state-item-name">tags</span>
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">schlagwörter</span>
       </div>
   </nav>
 </div>
@@ -500,10 +568,10 @@ if __name__==&quot;__main__&quot;:
   </span>
   <span class="author" itemprop="copyrightHolder">John Doe</span>
 </div>
-  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v4.2.0
+  <div class="powered-by">Erstellt mit  <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v4.2.0
   </div>
   <span class="post-meta-divider">|</span>
-  <div class="theme-info">Theme – <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.7.2
+  <div class="theme-info">Design – <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.7.2
   </div>
 
         
