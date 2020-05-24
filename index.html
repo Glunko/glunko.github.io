@@ -21,10 +21,10 @@
   </script>
 
   <meta property="og:type" content="website">
-<meta property="og:title" content="Glunko">
+<meta property="og:title" content="Glun">
 <meta property="og:url" content="http://yoursite.com/index.html">
-<meta property="og:site_name" content="Glunko">
-<meta property="article:author" content="John Doe">
+<meta property="og:site_name" content="Glun">
+<meta property="article:author" content="GLUN">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="http://yoursite.com/">
@@ -39,7 +39,7 @@
   };
 </script>
 
-  <title>Glunko</title>
+  <title>Glun</title>
   
 
 
@@ -70,6 +70,7 @@
   </style>
 </noscript>
 
+<link rel="alternate" href="/atom.xml" title="Glun" type="application/atom+xml">
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -91,7 +92,7 @@
     <div>
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Glunko</span>
+        <span class="site-title">Glun</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
@@ -148,12 +149,12 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="John Doe">
+      <meta itemprop="name" content="GLUN">
       <meta itemprop="description" content="">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Glunko">
+      <meta itemprop="name" content="Glun">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
@@ -167,10 +168,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Veröffentlicht am</span>
-              
 
-              <time title="Erstellt: 2020-05-23 18:05:04 / Geändert am: 21:54:49" itemprop="dateCreated datePublished" datetime="2020-05-23T18:05:04+08:00">2020-05-23</time>
+              <time title="Erstellt: 2020-05-23 18:05:04" itemprop="dateCreated datePublished" datetime="2020-05-23T18:05:04+08:00">2020-05-23</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Bearbeitet am</span>
+                <time title="Geändert am: 2020-05-24 11:52:37" itemprop="dateModified" datetime="2020-05-24T11:52:37+08:00">2020-05-24</time>
+              </span>
 
           
 
@@ -192,7 +199,7 @@
 <hr>
 <h3 id="misc4"><a href="#misc4" class="headerlink" title="misc4"></a>misc4</h3><p>emmm，是一个pcap文件，流量分析还不是还会，顺便学习好了。<br><img src="/ctf01/misc400.png" alt="misc4"><br>过滤一下http协议<br><img src="/ctf01/misc401.png" alt="misc4"><br>看见一个md5加密和gzcompress()函数<br><img src="/ctf01/misc402.png" alt="misc4"><br>于是md5拿去在线网站撞库，得到cometohackme，无果…<br>继续看看剩下的，http追踪流发现一串字符串，感觉是base64的密文，拿去php解密<br><img src="/ctf01/misc403.png" alt="misc4"><br><img src="/ctf01/misc405.png" alt="misc4"><br>得flag</p>
 <hr>
-<h3 id="misc5"><a href="#misc5" class="headerlink" title="misc5"></a>misc5</h3><p>是一个图<br><img src="/ctf01/misc500.png" alt="misc5"><br>有300kb了，再一次拿到kali扫描<br><img src="/ctf01/misc501.png" alt="misc5"><br>再一次无果<br><img src="/ctf01/misc502.jpg" alt="misc5"><br>(可恶….是幻术吗…明明感觉是这样子…怎么会再一次…大意了)<br>然后看看rgb通道，没有什么东西。考虑lsb隐写，然后得到zip的hex<br><img src="/ctf01/misc502.png" alt="misc5"><br>文件损坏…拿WinRAR修复一下<br><img src="/ctf01/misc503.png" alt="misc5"><br>得到一个未知文件，用010打开是一个elf文件，要用kali打开<br><img src="/ctf01/misc507.png" alt="misc5"><br><img src="/ctf01/misc504.png" alt="misc5"><br><img src="/ctf01/misc505.png" alt="misc5"><br>sudo chmon 755 1 给一个限权<br><img src="misc506.png" alt="misc5"></p>
+<h3 id="misc5"><a href="#misc5" class="headerlink" title="misc5"></a>misc5</h3><p>是一个图<br><img src="/ctf01/misc500.png" alt="misc5"><br>有300kb了，再一次拿到kali扫描<br><img src="/ctf01/misc501.png" alt="misc5"><br>再一次无果<br><img src="/ctf01/misc502.jpg" alt="misc5"><br>(可恶….是幻术吗…明明感觉是这样子…怎么会再一次…大意了)<br>然后看看rgb通道，没有什么东西。考虑lsb隐写，然后得到zip的hex<br><img src="/ctf01/misc502.png" alt="misc5"><br>文件损坏…拿WinRAR修复一下<br><img src="/ctf01/misc503.png" alt="misc5"><br>得到一个未知文件，用010打开是一个elf文件，要用kali打开<br><img src="/ctf01/misc507.png" alt="misc5"><br><img src="/ctf01/misc504.png" alt="misc5"><br><img src="/ctf01/misc505.png" alt="misc5"><br>sudo chmon 755 1 给一个限权<br><img src="/ctf01/misc506.png" alt="misc5"></p>
 
       
     </div>
@@ -216,12 +223,12 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="John Doe">
+      <meta itemprop="name" content="GLUN">
       <meta itemprop="description" content="">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Glunko">
+      <meta itemprop="name" content="Glun">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
@@ -295,12 +302,12 @@ for filename in files:
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="John Doe">
+      <meta itemprop="name" content="GLUN">
       <meta itemprop="description" content="">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Glunko">
+      <meta itemprop="name" content="Glun">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
@@ -524,7 +531,7 @@ if __name__==&quot;__main__&quot;:
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-  <p class="site-author-name" itemprop="name">John Doe</p>
+  <p class="site-author-name" itemprop="name">GLUN</p>
   <div class="site-description" itemprop="description"></div>
 </div>
 <div class="site-state-wrap motion-element">
@@ -566,7 +573,7 @@ if __name__==&quot;__main__&quot;:
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">John Doe</span>
+  <span class="author" itemprop="copyrightHolder">GLUN</span>
 </div>
   <div class="powered-by">Erstellt mit  <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v4.2.0
   </div>
