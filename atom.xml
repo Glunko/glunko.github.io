@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://glunko.github.io/"/>
-  <updated>2020-05-24T03:52:37.934Z</updated>
+  <updated>2020-10-05T09:24:57.403Z</updated>
   <id>https://glunko.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>ctf02</title>
+    <link href="https://glunko.github.io/2020/10/05/ctf02/"/>
+    <id>https://glunko.github.io/2020/10/05/ctf02/</id>
+    <published>2020-10-05T09:17:05.000Z</published>
+    <updated>2020-10-05T09:24:57.403Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;关于8月的ctfwp-D&quot;&gt;&lt;a href=&quot;#关于8月的ctfwp-D&quot; class=&quot;headerlink&quot; title=&quot;关于8月的ctfwp :D&quot;&gt;&lt;/a&gt;关于8月的ctfwp :D&lt;/h3&gt;&lt;p&gt;2020ciscn’s wp: &lt;a
+        
+      
+    
+    </summary>
+    
+    
+    
+      <category term="ctf" scheme="https://glunko.github.io/tags/ctf/"/>
+    
+  </entry>
   
   <entry>
     <title>ctf001</title>
