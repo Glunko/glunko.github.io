@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="zh_Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"www.glun.top","root":"/","scheme":"Muse","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="10.13的做题小记录1.刷新过的图片这里下载题目得到一张图片，hex观察无果，其他的隐写也无果。考虑题目的提示：刷新的按键一般是F5。故考虑F5隐写。F5刷新隐写，原理文献：https:&#x2F;&#x2F;wenku.baidu.com&#x2F;view&#x2F;c9150e29b4daa58da0114a39.html,利用工具:https:&#x2F;&#x2F;github.com&#x2F;matthewgao&#x2F;F5-steganography，使">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ctf03">
+<meta property="og:url" content="http://www.glun.top/2020/10/13/ctf03/index.html">
+<meta property="og:site_name" content="Glun">
+<meta property="og:description" content="10.13的做题小记录1.刷新过的图片这里下载题目得到一张图片，hex观察无果，其他的隐写也无果。考虑题目的提示：刷新的按键一般是F5。故考虑F5隐写。F5刷新隐写，原理文献：https:&#x2F;&#x2F;wenku.baidu.com&#x2F;view&#x2F;c9150e29b4daa58da0114a39.html,利用工具:https:&#x2F;&#x2F;github.com&#x2F;matthewgao&#x2F;F5-steganography，使">
+<meta property="og:image" content="http://www.glun.top/ctf03/1.png">
+<meta property="og:image" content="http://www.glun.top/ctf03/2.png">
+<meta property="og:image" content="http://www.glun.top/ctf03/3.png">
+<meta property="og:image" content="http://www.glun.top/ctf03/4.png">
+<meta property="og:image" content="http://www.glun.top/ctf03/5.png">
+<meta property="og:image" content="http://www.glun.top/ctf03/6.png">
+<meta property="og:image" content="http://www.glun.top/ctf03/7.png">
+<meta property="og:image" content="http://www.glun.top/ctf03/8.png">
+<meta property="og:image" content="http://www.glun.top/ctf03/9.png">
+<meta property="og:image" content="http://www.glun.top/ctf03/10.png">
+<meta property="og:image" content="http://www.glun.top/ctf03/11.png">
+<meta property="article:published_time" content="2020-10-13T09:36:05.000Z">
+<meta property="article:modified_time" content="2020-10-13T10:03:36.505Z">
+<meta property="article:author" content="GLUN">
+<meta property="article:tag" content="ctf">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://www.glun.top/ctf03/1.png">
+
+<link rel="canonical" href="http://www.glun.top/2020/10/13/ctf03/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true
+  };
+</script>
+
+  <title>ctf03 | Glun</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="Glun" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Navigationsleiste an/ausschalten">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Glun</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">一个彩笔的日常...</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Startseite</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archiv</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh_Hans">
+    <link itemprop="mainEntityOfPage" href="http://www.glun.top/2020/10/13/ctf03/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="GLUN">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Glun">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          ctf03
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+
+              <time title="Erstellt: 2020-10-13 17:36:05 / Geändert am: 18:03:36" itemprop="dateCreated datePublished" datetime="2020-10-13T17:36:05+08:00">2020-10-13</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h3 id="10-13的做题小记录"><a href="#10-13的做题小记录" class="headerlink" title="10.13的做题小记录"></a>10.13的做题小记录</h3><h5 id="1-刷新过的图片"><a href="#1-刷新过的图片" class="headerlink" title="1.刷新过的图片"></a>1.刷新过的图片</h5><p>这里下载题目得到一张图片，hex观察无果，其他的隐写也无果。考虑题目的提示：刷新的按键一般是F5。故考虑F5隐写。<br>F5刷新隐写，原理文献：<a href="https://wenku.baidu.com/view/c9150e29b4daa58da0114a39.html" target="_blank" rel="noopener">https://wenku.baidu.com/view/c9150e29b4daa58da0114a39.html</a>,<br>利用工具:<a href="https://github.com/matthewgao/F5-steganography，" target="_blank" rel="noopener">https://github.com/matthewgao/F5-steganography，</a><br>使用命令：java Extract 123456.jpg -p [password]/[空]，在output.txt找解密后的文本，得flag。</p>
+<h5 id="2-snake"><a href="#2-snake" class="headerlink" title="2.snake"></a>2.snake</h5><p>下载后又是一张jpg,观察图片hex发现熟悉的504B，提取zip后得到两个文件，一个key，一个cipher，打开key，有一串base64字符，解码之后，得到：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">What is Nicki Minaj&#39;s favorite song that refers to snakes?</span><br></pre></td></tr></table></figure>
+<p>百度一波得到key：anacondam,对于蛇这个名词，在英语中还有一个翻译：Serpent。<br>Serpent是一个加密算法，关于算法的更多详细信息参考<a href="https://blog.csdn.net/douqingl/article/details/50256931" target="_blank" rel="noopener">博客</a>,<br>找一个<a href="http://serpent.online-domain-tools.com/" target="_blank" rel="noopener">在线网站</a>ecb模式输入key得到flag。</p>
+<h5 id="3-梅花香之苦寒来"><a href="#3-梅花香之苦寒来" class="headerlink" title="3.梅花香之苦寒来"></a>3.梅花香之苦寒来</h5><p>下载又又是图片，emmmm，查看hex看到jpg文件尾发现大量字符串<br><img src="/ctf03/1.png" alt="misc"><br>不难判断这是[^16进制],[^16进制]:一般用数字0到9和字母A到F（或a<del>f）表示，其中:A</del>F表示10~15，这些称作十六进制数字。<br>一个字节一组转ascii码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">with open(&#39;hex.txt&#39;,&#39;r&#39;) as h:</span><br><span class="line">    h&#x3D;h.read()</span><br><span class="line">j &#x3D; open (&#39;ascii.txt&#39;,&#39;w&#39;)</span><br><span class="line"></span><br><span class="line">tem&#x3D;&#39;&#39;</span><br><span class="line">for i in range(0,len(h),2):</span><br><span class="line">    tem&#x3D;&#39;0x&#39;+h[i]+h[i+1]</span><br><span class="line">    tem&#x3D;int(tem,base&#x3D;16)</span><br><span class="line">    j.write(chr(tem))</span><br></pre></td></tr></table></figure>
+<p>得到<img src="/ctf03/2.png" alt="misc"><br>好多好多的坐标，<br>使用gnuplot工具绘图，安装：<br>输入：apt-get install gnuplot，然后输入：gnuplot 就可以打开了<br>但是打开之后并不能良好的使用，会报错：Terminal type set to ‘unknown’<br>因此需要安装多余的依赖包，输入：apt-get install gnuplot-x11<br><img src="/ctf03/3.png" alt="misc"><br>但是gnuplot识别的坐标为x y以空格作为分隔，所以用脚本让坐标变成gnuplot可以识别的坐标</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">with open(&#39;ascii.txt&#39;,&#39;r&#39;)as a:</span><br><span class="line">    a&#x3D;a.read()</span><br><span class="line">p &#x3D; open(&quot;output.txt&quot;,&#39;w&#39;)</span><br><span class="line">a&#x3D;a.split()</span><br><span class="line">tem&#x3D;&#39;&#39;</span><br><span class="line">for i in range(0,len(a)):</span><br><span class="line">    tem&#x3D;a[i]</span><br><span class="line">    tem&#x3D;tem.lstrip(&#39;(&#39;)</span><br><span class="line">    tem&#x3D;tem.rstrip(&#39;)&#39;)</span><br><span class="line">    for j in range(0,len(tem)):</span><br><span class="line">        if tem[j]&#x3D;&#x3D;&#39;,&#39;:</span><br><span class="line">            tem&#x3D;tem[:j]+&#39; &#39;+tem[j+1:]</span><br><span class="line">    p.write(tem)</span><br><span class="line">    p.write(&quot;\n&quot;)</span><br></pre></td></tr></table></figure>
+<p>最终<img src="/ctf03/4.png" alt="misc"><br>kali下在output目录下gnuplot: “plot output.txt”<br><img src="/ctf03/5.png" alt="misc"></p>
+<h5 id="BJDCTF-2nd-圣火昭昭-y1ng"><a href="#BJDCTF-2nd-圣火昭昭-y1ng" class="headerlink" title="[BJDCTF 2nd]圣火昭昭-y1ng"></a>[BJDCTF 2nd]圣火昭昭-y1ng</h5><p>下载zip又是一张图片，右键查看属性备注有一个新约佛论禅加密<br><img src="/ctf03/6.png" alt="misc"><br>解密得到gemlove<br>在看题目提示<br><img src="/ctf03/7.png" alt="misc"><br>猜测出题人使用了outguess工具隐写文件<br>工具下载：<a href="https://github.com/crorvick/outguess" target="_blank" rel="noopener">https://github.com/crorvick/outguess</a><br>下载源文件：git clone <a href="https://github.com/crorvick/outguess" target="_blank" rel="noopener">https://github.com/crorvick/outguess</a><br>kali下执行命令./configure &amp;&amp; make &amp;&amp; make install 进行编译及安装。<br><img src="/ctf03/8.png" alt="misc"><br>安装成功！！！（其实我挺害怕报错的=D）<br>使用命令：outguess -k ‘gemlove’ -r ./sheng_huo_zhao_zhao.jpg flag.txt<br><img src="/ctf03/9.png" alt="misc"></p>
+<h3 id="tips"><a href="#tips" class="headerlink" title="tips:"></a>tips:</h3><h4 id="⚫-“-gt-”这是brainfuck代码，使用在线执行网站运行即可得到明文"><a href="#⚫-“-gt-”这是brainfuck代码，使用在线执行网站运行即可得到明文" class="headerlink" title="⚫ “++.&gt;++++”这是brainfuck代码，使用在线执行网站运行即可得到明文"></a>⚫ “++.&gt;++++”这是brainfuck代码，使用<a href="http://bf.doleczek.pl/" target="_blank" rel="noopener">在线执行网站</a>运行即可得到明文</h4><h4 id="⚫-emoji-加密在线网站key为emoji，或者网站https-github-com-mozilla-codemoji下载源码"><a href="#⚫-emoji-加密在线网站key为emoji，或者网站https-github-com-mozilla-codemoji下载源码" class="headerlink" title="⚫ emoji 加密在线网站key为emoji，或者网站https://github.com/mozilla/codemoji下载源码"></a>⚫ emoji 加密<a href="http://taqini.space/codemoji/#/encrypt" target="_blank" rel="noopener">在线网站</a>key为emoji，或者网站<a href="https://github.com/mozilla/codemoji下载源码" target="_blank" rel="noopener">https://github.com/mozilla/codemoji下载源码</a></h4><h4 id="⚫-base64可以转图片"><a href="#⚫-base64可以转图片" class="headerlink" title="⚫ base64可以转图片"></a>⚫ base64可以转<a href="https://the-x.cn/base64" target="_blank" rel="noopener">图片</a></h4><h4 id="⚫-ook也是一个加密密文-在线网站"><a href="#⚫-ook也是一个加密密文-在线网站" class="headerlink" title="⚫ ook也是一个加密密文,在线网站"></a>⚫ ook也是一个加密密文,<a href="https://www.splitbrain.org/services/ook" target="_blank" rel="noopener">在线网站</a></h4><h4 id="⚫-“佛曰”为与佛论禅加密，”新佛曰”为新约佛论禅"><a href="#⚫-“佛曰”为与佛论禅加密，”新佛曰”为新约佛论禅" class="headerlink" title="⚫ “佛曰”为与佛论禅加密，”新佛曰”为新约佛论禅"></a>⚫ “佛曰”为<a href="http://www.keyfc.net/bbs/tools/tudoucode.aspx" target="_blank" rel="noopener">与佛论禅</a>加密，”新佛曰”为<a href="http://hi.pcmoe.net/buddha.html" target="_blank" rel="noopener">新约佛论禅</a></h4><h4 id="⚫-识别outguess和steghide隐写的方法：（待验证）”password”的密匙偏向于steghide-”key”的密匙偏向于outguess，主要看题目有没有提示工具的关键名字如：”guess”，”hide”"><a href="#⚫-识别outguess和steghide隐写的方法：（待验证）”password”的密匙偏向于steghide-”key”的密匙偏向于outguess，主要看题目有没有提示工具的关键名字如：”guess”，”hide”" class="headerlink" title="⚫ 识别outguess和steghide隐写的方法：（待验证）”password”的密匙偏向于steghide,”key”的密匙偏向于outguess，主要看题目有没有提示工具的关键名字如：”guess”，”hide”"></a>⚫ 识别outguess和steghide隐写的方法：（待验证）”password”的密匙偏向于steghide,”key”的密匙偏向于outguess，主要看题目有没有提示工具的关键名字如：”guess”，”hide”</h4><h4 id="⚫-another："><a href="#⚫-another：" class="headerlink" title="⚫ another："></a>⚫ another：</h4><p><img src="/ctf03/10.png" alt="misc"><br>隐写的还有一种JPG隐写的方法——使用jphhs05工具来载入数据<br><img src="/ctf03/11.png" alt="misc"></p>
+<p>end…</p>
+
+    </div>
+
+    
+    
+    
+        
+
+  <div class="followme">
+    <p>Welcome to my other publishing channels</p>
+
+    <div class="social-list">
+
+            <div class="social-item">
+              <a target="_blank" class="social-link" href="/atom.xml">
+                <span class="icon">
+                  <i class="fa fa-rss"></i>
+                </span>
+
+                <span class="label">RSS</span>
+              </a>
+            </div>
+    </div>
+  </div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/ctf/" rel="tag"># ctf</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/10/05/ctf02/" rel="prev" title="ctf02">
+      <i class="fa fa-chevron-left"></i> ctf02
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Inhaltsverzeichnis
+        </li>
+        <li class="sidebar-nav-overview">
+          Übersicht
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#10-13的做题小记录"><span class="nav-number">1.</span> <span class="nav-text">10.13的做题小记录</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-刷新过的图片"><span class="nav-number">1.0.1.</span> <span class="nav-text">1.刷新过的图片</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-snake"><span class="nav-number">1.0.2.</span> <span class="nav-text">2.snake</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-梅花香之苦寒来"><span class="nav-number">1.0.3.</span> <span class="nav-text">3.梅花香之苦寒来</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#BJDCTF-2nd-圣火昭昭-y1ng"><span class="nav-number">1.0.4.</span> <span class="nav-text">[BJDCTF 2nd]圣火昭昭-y1ng</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tips"><span class="nav-number">2.</span> <span class="nav-text">tips:</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#⚫-“-gt-”这是brainfuck代码，使用在线执行网站运行即可得到明文"><span class="nav-number">2.1.</span> <span class="nav-text">⚫ “++.&gt;++++”这是brainfuck代码，使用在线执行网站运行即可得到明文</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#⚫-emoji-加密在线网站key为emoji，或者网站https-github-com-mozilla-codemoji下载源码"><span class="nav-number">2.2.</span> <span class="nav-text">⚫ emoji 加密在线网站key为emoji，或者网站https:&#x2F;&#x2F;github.com&#x2F;mozilla&#x2F;codemoji下载源码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#⚫-base64可以转图片"><span class="nav-number">2.3.</span> <span class="nav-text">⚫ base64可以转图片</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#⚫-ook也是一个加密密文-在线网站"><span class="nav-number">2.4.</span> <span class="nav-text">⚫ ook也是一个加密密文,在线网站</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#⚫-“佛曰”为与佛论禅加密，”新佛曰”为新约佛论禅"><span class="nav-number">2.5.</span> <span class="nav-text">⚫ “佛曰”为与佛论禅加密，”新佛曰”为新约佛论禅</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#⚫-识别outguess和steghide隐写的方法：（待验证）”password”的密匙偏向于steghide-”key”的密匙偏向于outguess，主要看题目有没有提示工具的关键名字如：”guess”，”hide”"><span class="nav-number">2.6.</span> <span class="nav-text">⚫ 识别outguess和steghide隐写的方法：（待验证）”password”的密匙偏向于steghide,”key”的密匙偏向于outguess，主要看题目有没有提示工具的关键名字如：”guess”，”hide”</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#⚫-another："><span class="nav-number">2.7.</span> <span class="nav-text">⚫ another：</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">GLUN</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-name">Artikel</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">schlagwörter</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">GLUN</span>
+</div>
+  <div class="powered-by">Erstellt mit  <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v4.2.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">Design – <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.7.2
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
