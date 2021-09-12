@@ -145,6 +145,71 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh_Hans">
+    <link itemprop="mainEntityOfPage" href="http://www.glun.top/2021/09/12/2021ycb/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="GLUN">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Glun">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/09/12/2021ycb/" class="post-title-link" itemprop="url">2021羊城杯misc</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+
+              <time title="Erstellt: 2021-09-12 12:05:04 / Geändert am: 12:02:47" itemprop="dateCreated datePublished" datetime="2021-09-12T12:05:04+08:00">2021-09-12</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="misc520"><a href="#misc520" class="headerlink" title="misc520"></a>misc520</h3><p><img src="/2021ycb/02.png" alt="misc520"><br>时间匆忙就做了一题还没有提交…<br>是一个经典的usb鼠标流量分析题了<br>下载题目拿到520个套娃zip，直接7z加连点器提取flag.png<br>然后放到Stegsolve.jar看到bgr通道里面有一个zip<br><img src="/2021ycb/01.png" alt="misc520"><br>提取出来发现加密拿去爆破password：12345<br>又拿到pacp，打开看看是一个鼠标流量就用kali的工具提取一下数据<br>(USB协议的数据部分在Leftover Capture Data域之中，在Mac和Linux下可以用tshark命令可以将 leftover capture data单独提取出来 命令如下：tshark -r usb1.pcapng -T fields -e usb.capdata &gt; usbdata.txt)<br><img src="/2021ycb/03.png" alt="misc520"><br>发现前面有一堆空行和后面也有空行于是去掉空行：<br>cat filename | sed -e ‘/^$/d’ &gt; filename<br>然后<br>    import re<br>    file = open(“output.txt”,’w’)</p>
+<pre><code>with open(&apos;usb.txt&apos;, &apos;r&apos;) as lines:
+    for line in lines:
+        result = re.sub(r&quot;(?&lt;=\w)(?=(?:\w\w)+$)&quot;, &quot;:&quot;, line)
+        file.write(result)</code></pre><p>变成这种形式<br><img src="/2021ycb/04.png" alt="misc520"><br>用大佬的脚本<br>    nums = []<br>    keys = open(‘output.txt’,’r’)<br>    posx = 0<br>    posy = 0<br>    for line in keys:<br>        if len(line) != 12 :<br>            continue<br>        x = int(line[3:5],16)<br>        y = int(line[6:8],16)<br>        if x &gt; 127 :<br>            x -= 256<br>        if y &gt; 127 :<br>            y -= 256<br>        posx += x<br>        posy += y<br>        btn_flag = int(line[0:2],16)  # 1 for left , 2 for right , 0 for nothing<br>        if btn_flag == 1 :<br>            print posx , posy</p>
+<pre><code>keys.close()</code></pre><p>搞出坐标画图发现是反的，改一下y轴坐标为负即<br>    nums = []<br>    keys = open(‘output.txt’,’r’)<br>    posx = 0<br>    posy = 0<br>    for line in keys:<br>        if len(line) != 12 :<br>            continue<br>        x = int(line[3:5],16)<br>        y = int(line[6:8],16)<br>        if x &gt; 127 :<br>            x -= 256<br>        if y &gt; 127 :<br>            y -= 256<br>        posx += x<br>        posy += y<br>        btn_flag = int(line[0:2],16)  # 1 for left , 2 for right , 0 for nothing<br>        if btn_flag == 1 :<br>            print posx , -posy</p>
+<pre><code>keys.close()</code></pre><p>拿去py2一下得出坐标然后kali下gnupolt和plot “loacl.txt”，得flag</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh_Hans">
     <link itemprop="mainEntityOfPage" href="http://www.glun.top/2020/10/13/ctf03/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -699,7 +764,7 @@ if __name__==&quot;__main__&quot;:
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-count">6</span>
           <span class="site-state-item-name">Artikel</span>
         </a>
       </div>
@@ -729,7 +794,7 @@ if __name__==&quot;__main__&quot;:
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2020</span>
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>

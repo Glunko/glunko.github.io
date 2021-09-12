@@ -20,14 +20,24 @@
     var CONFIG = {"hostname":"www.glun.top","root":"/","scheme":"Muse","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Glun">
-<meta property="og:url" content="http://www.glun.top/tags/ctf/index.html">
+  <meta name="description" content="misc520时间匆忙就做了一题还没有提交…是一个经典的usb鼠标流量分析题了下载题目拿到520个套娃zip，直接7z加连点器提取flag.png然后放到Stegsolve.jar看到bgr通道里面有一个zip提取出来发现加密拿去爆破password：12345又拿到pacp，打开看看是一个鼠标流量就用kali的工具提取一下数据(USB协议的数据部分在Leftover Capture Data域之">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2021羊城杯misc">
+<meta property="og:url" content="http://www.glun.top/2021/09/12/2021ycb/index.html">
 <meta property="og:site_name" content="Glun">
+<meta property="og:description" content="misc520时间匆忙就做了一题还没有提交…是一个经典的usb鼠标流量分析题了下载题目拿到520个套娃zip，直接7z加连点器提取flag.png然后放到Stegsolve.jar看到bgr通道里面有一个zip提取出来发现加密拿去爆破password：12345又拿到pacp，打开看看是一个鼠标流量就用kali的工具提取一下数据(USB协议的数据部分在Leftover Capture Data域之">
+<meta property="og:image" content="http://www.glun.top/2021ycb/02.png">
+<meta property="og:image" content="http://www.glun.top/2021ycb/01.png">
+<meta property="og:image" content="http://www.glun.top/2021ycb/03.png">
+<meta property="og:image" content="http://www.glun.top/2021ycb/04.png">
+<meta property="article:published_time" content="2021-09-12T04:05:04.000Z">
+<meta property="article:modified_time" content="2021-09-12T04:02:47.702Z">
 <meta property="article:author" content="GLUN">
+<meta property="article:tag" content="ctf">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://www.glun.top/2021ycb/02.png">
 
-<link rel="canonical" href="http://www.glun.top/tags/ctf/">
+<link rel="canonical" href="http://www.glun.top/2021/09/12/2021ycb/">
 
 
 <script id="page-configurations">
@@ -35,11 +45,11 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false
+    isPost : true
   };
 </script>
 
-  <title>Schlagwort: ctf | Glun</title>
+  <title>2021羊城杯misc | Glun</title>
   
 
 
@@ -140,113 +150,106 @@
           <div class="content">
             
 
+  <div class="posts-expand">
+      
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <h1 class="collection-header">ctf
-          <small>Schlagwort</small>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh_Hans">
+    <link itemprop="mainEntityOfPage" href="http://www.glun.top/2021/09/12/2021ycb/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="GLUN">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Glun">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          2021羊城杯misc
         </h1>
-      </div>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+
+              <time title="Erstellt: 2021-09-12 12:05:04 / Geändert am: 12:02:47" itemprop="dateCreated datePublished" datetime="2021-09-12T12:05:04+08:00">2021-09-12</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <h1 class="collection-header">2021</h1>
+        <h3 id="misc520"><a href="#misc520" class="headerlink" title="misc520"></a>misc520</h3><p><img src="/2021ycb/02.png" alt="misc520"><br>时间匆忙就做了一题还没有提交…<br>是一个经典的usb鼠标流量分析题了<br>下载题目拿到520个套娃zip，直接7z加连点器提取flag.png<br>然后放到Stegsolve.jar看到bgr通道里面有一个zip<br><img src="/2021ycb/01.png" alt="misc520"><br>提取出来发现加密拿去爆破password：12345<br>又拿到pacp，打开看看是一个鼠标流量就用kali的工具提取一下数据<br>(USB协议的数据部分在Leftover Capture Data域之中，在Mac和Linux下可以用tshark命令可以将 leftover capture data单独提取出来 命令如下：tshark -r usb1.pcapng -T fields -e usb.capdata &gt; usbdata.txt)<br><img src="/2021ycb/03.png" alt="misc520"><br>发现前面有一堆空行和后面也有空行于是去掉空行：<br>cat filename | sed -e ‘/^$/d’ &gt; filename<br>然后<br>    import re<br>    file = open(“output.txt”,’w’)</p>
+<pre><code>with open(&apos;usb.txt&apos;, &apos;r&apos;) as lines:
+    for line in lines:
+        result = re.sub(r&quot;(?&lt;=\w)(?=(?:\w\w)+$)&quot;, &quot;:&quot;, line)
+        file.write(result)</code></pre><p>变成这种形式<br><img src="/2021ycb/04.png" alt="misc520"><br>用大佬的脚本<br>    nums = []<br>    keys = open(‘output.txt’,’r’)<br>    posx = 0<br>    posy = 0<br>    for line in keys:<br>        if len(line) != 12 :<br>            continue<br>        x = int(line[3:5],16)<br>        y = int(line[6:8],16)<br>        if x &gt; 127 :<br>            x -= 256<br>        if y &gt; 127 :<br>            y -= 256<br>        posx += x<br>        posy += y<br>        btn_flag = int(line[0:2],16)  # 1 for left , 2 for right , 0 for nothing<br>        if btn_flag == 1 :<br>            print posx , posy</p>
+<pre><code>keys.close()</code></pre><p>搞出坐标画图发现是反的，改一下y轴坐标为负即<br>    nums = []<br>    keys = open(‘output.txt’,’r’)<br>    posx = 0<br>    posy = 0<br>    for line in keys:<br>        if len(line) != 12 :<br>            continue<br>        x = int(line[3:5],16)<br>        y = int(line[6:8],16)<br>        if x &gt; 127 :<br>            x -= 256<br>        if y &gt; 127 :<br>            y -= 256<br>        posx += x<br>        posy += y<br>        btn_flag = int(line[0:2],16)  # 1 for left , 2 for right , 0 for nothing<br>        if btn_flag == 1 :<br>            print posx , -posy</p>
+<pre><code>keys.close()</code></pre><p>拿去py2一下得出坐标然后kali下gnupolt和plot “loacl.txt”，得flag</p>
+
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+    
+    
+    
+        
 
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2021-09-12T12:05:04+08:00"
-              content="2021-09-12">
-          09-12
-        </time>
-      </div>
+  <div class="followme">
+    <p>Welcome to my other publishing channels</p>
 
-      <h2 class="post-title">
-          <a class="post-title-link" href="/2021/09/12/2021ycb/" itemprop="url">
-            <span itemprop="name">2021羊城杯misc</span>
-          </a>
-      </h2>
+    <div class="social-list">
 
-    </header>
-  </article>
-    <div class="collection-year">
-      <h1 class="collection-header">2020</h1>
-    </div>
+            <div class="social-item">
+              <a target="_blank" class="social-link" href="/atom.xml">
+                <span class="icon">
+                  <i class="fa fa-rss"></i>
+                </span>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-10-13T17:36:05+08:00"
-              content="2020-10-13">
-          10-13
-        </time>
-      </div>
-
-      <h2 class="post-title">
-          <a class="post-title-link" href="/2020/10/13/ctf03/" itemprop="url">
-            <span itemprop="name">ctf03</span>
-          </a>
-      </h2>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-10-05T17:17:05+08:00"
-              content="2020-10-05">
-          10-05
-        </time>
-      </div>
-
-      <h2 class="post-title">
-          <a class="post-title-link" href="/2020/10/05/ctf02/" itemprop="url">
-            <span itemprop="name">ctf02</span>
-          </a>
-      </h2>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-05-23T18:05:04+08:00"
-              content="2020-05-23">
-          05-23
-        </time>
-      </div>
-
-      <h2 class="post-title">
-          <a class="post-title-link" href="/2020/05/23/ctf01/" itemprop="url">
-            <span itemprop="name">ctf001</span>
-          </a>
-      </h2>
-
-    </header>
-  </article>
-
+                <span class="label">RSS</span>
+              </a>
+            </div>
     </div>
   </div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/ctf/" rel="tag"># ctf</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/10/13/ctf03/" rel="prev" title="ctf03">
+      <i class="fa fa-chevron-left"></i> ctf03
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
   
   
   
 
-  
-
+  </div>
 
 
           </div>
@@ -297,6 +300,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#misc520"><span class="nav-number">1.</span> <span class="nav-text">misc520</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
