@@ -31,7 +31,7 @@
 <meta property="og:image" content="http://www.glun.top/2021ycb/03.png">
 <meta property="og:image" content="http://www.glun.top/2021ycb/04.png">
 <meta property="article:published_time" content="2021-09-12T04:05:04.000Z">
-<meta property="article:modified_time" content="2021-09-12T04:07:59.145Z">
+<meta property="article:modified_time" content="2021-09-12T04:08:59.007Z">
 <meta property="article:author" content="GLUN">
 <meta property="article:tag" content="ctf">
 <meta name="twitter:card" content="summary">
@@ -179,7 +179,7 @@
               <span class="post-meta-item-text">Veröffentlicht am</span>
               
 
-              <time title="Erstellt: 2021-09-12 12:05:04 / Geändert am: 12:07:59" itemprop="dateCreated datePublished" datetime="2021-09-12T12:05:04+08:00">2021-09-12</time>
+              <time title="Erstellt: 2021-09-12 12:05:04 / Geändert am: 12:08:59" itemprop="dateCreated datePublished" datetime="2021-09-12T12:05:04+08:00">2021-09-12</time>
             </span>
 
           
@@ -198,7 +198,7 @@
 <p>)<br><img src="/2021ycb/03.png" alt="misc520"><br>发现前面有一堆空行和后面也有空行于是去掉空行：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat filename | sed -e &#39;&#x2F;^$&#x2F;d&#39; &gt; filename</span><br></pre></td></tr></table></figure>
 <p>然后</p>
-<figure class="highlight plain"><figcaption><span>re</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">file &#x3D; open(&quot;output.txt&quot;,&#39;w&#39;)</span><br><span class="line">with open(&#39;usb.txt&#39;, &#39;r&#39;) as lines:</span><br><span class="line">    for line in lines:</span><br><span class="line">        result &#x3D; re.sub(r&quot;(?&lt;&#x3D;\w)(?&#x3D;(?:\w\w)+$)&quot;, &quot;:&quot;, line)</span><br><span class="line">        file.write(result)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import re</span><br><span class="line">file &#x3D; open(&quot;output.txt&quot;,&#39;w&#39;)</span><br><span class="line">with open(&#39;usb.txt&#39;, &#39;r&#39;) as lines:</span><br><span class="line">    for line in lines:</span><br><span class="line">        result &#x3D; re.sub(r&quot;(?&lt;&#x3D;\w)(?&#x3D;(?:\w\w)+$)&quot;, &quot;:&quot;, line)</span><br><span class="line">        file.write(result)</span><br></pre></td></tr></table></figure>
 <p>变成这种形式<br><img src="/2021ycb/04.png" alt="misc520"><br>用大佬的脚本</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">nums &#x3D; []</span><br><span class="line">keys &#x3D; open(&#39;output.txt&#39;,&#39;r&#39;)</span><br><span class="line">posx &#x3D; 0</span><br><span class="line">posy &#x3D; 0</span><br><span class="line">for line in keys:</span><br><span class="line">    if len(line) !&#x3D; 12 :</span><br><span class="line">        continue</span><br><span class="line">    x &#x3D; int(line[3:5],16)</span><br><span class="line">    y &#x3D; int(line[6:8],16)</span><br><span class="line">    if x &gt; 127 :</span><br><span class="line">        x -&#x3D; 256</span><br><span class="line">    if y &gt; 127 :</span><br><span class="line">        y -&#x3D; 256</span><br><span class="line">    posx +&#x3D; x</span><br><span class="line">    posy +&#x3D; y</span><br><span class="line">    btn_flag &#x3D; int(line[0:2],16)  # 1 for left , 2 for right , 0 for nothing</span><br><span class="line">    if btn_flag &#x3D;&#x3D; 1 :</span><br><span class="line">        print posx , posy       </span><br><span class="line">    keys.close()</span><br></pre></td></tr></table></figure>
 <p>搞出坐标画图发现是反的，改一下y轴坐标为负即</p>
